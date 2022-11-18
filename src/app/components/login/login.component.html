@@ -1,0 +1,42 @@
+<body>
+    <div class="background"></div>
+    <div class="card">
+        <img class="logo" src="../../../assets/logo.png" />
+        <form class="form">
+            <div>
+                <form class="form" novalidate [formGroup]="loginForm">
+                    <!--Correo-->
+                    <mat-dialog-content>
+                        <mat-form-field class="matFullWidth">
+                            <input matInput formControlName="email" placeholder="Correo electrónico" type="email" email
+                                required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.email)">{{erroresForm.email}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <!--Contraseña-->
+                        <mat-form-field class="matFullWidth">
+                            <input matInput formControlName="password" placeholder="Contraseña" type="password"
+                                required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.password)">{{erroresForm.password}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <!--Button-->
+                        <mat-dialog-actions>
+                            <span class="flex-spacer"></span>
+                            <button type="submit" mat-stroked-button color="primary" [disabled]="loginForm.invalid"
+                                (click)="login()">Iniciar sesion</button>
+                        </mat-dialog-actions>
+                    </mat-dialog-content>
+                </form>
+            </div>
+        </form>
+        <footer>
+            <p>¿No estás registrado? <a href="/registro">Registrate aquí</a></p>
+            
+            <p>¿Contraseña olvidada? <a href="/password">Recupérala aquí</a></p>
+            
+        </footer>
+    </div>
+</body>

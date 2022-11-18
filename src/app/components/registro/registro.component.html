@@ -1,0 +1,55 @@
+<body>
+    <div class="background"></div>
+    <div class="card">
+        <img class="logo" src="../../../assets/logo.png" />
+        <form class="form">
+            <div class="contenedor">
+                <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <!--Nombre-->
+                    <mat-form-field class="matFullWidth">
+                        <input matInput formControlName="nombre" placeholder="Nombre" type="text" required>
+                        <mat-hint>
+                            <span [hidden]="!(erroresForm.nombre)">{{erroresForm.nombre}}</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <!--Apellidos-->
+                    <mat-form-field class="matFullWidth">
+                        <input matInput formControlName="apellidos" placeholder="Apellidos" type="text" required>
+                        <mat-hint>
+                            <span [hidden]="!(erroresForm.apellidos)">{{erroresForm.apellidos}}</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <!--Email-->
+                    <mat-form-field class="matFullWidth">
+                        <input matInput formControlName="email" placeholder="Correo electrónico" type="email" email required>
+                        <mat-hint>
+                            <span [hidden]="!(erroresForm.email)">{{erroresForm.email}}</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <!--Password-->
+                    <mat-form-field class="matFullWidth">
+                        <input matInput formControlName="password" placeholder="Contraseña" type="password" required>
+                        <mat-hint>
+                            <span [hidden]="!(erroresForm.password)">{{erroresForm.password}}</span>
+                        </mat-hint>
+                    </mat-form-field>
+                    <br>
+                    <!--Button-->
+                    <mat-dialog-actions>
+                        <span class="flex-spacer"></span>
+                        <button type="submit" [disabled]="registerForm.invalid" mat-button mat-stroked-button
+                            color="primary" (click)="showSuccess()">Registrarse</button>
+                    </mat-dialog-actions>
+                </form>
+            </div>
+        </form>
+        <footer>
+            <a href="/login">Inicia sesión aquí</a>
+            <br>
+            <a href="/password">Recupera la contraseña aquí</a>
+        </footer>
+    </div>
+</body>
