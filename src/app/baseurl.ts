@@ -1,0 +1,1 @@
+export const baseURL = 'https://asociados.femcristar.com/';

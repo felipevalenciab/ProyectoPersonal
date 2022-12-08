@@ -46,6 +46,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { PasswordComponent } from './components/password/password.component';
 
+//HREF
+import {APP_BASE_HREF} from '@angular/common';
+import { baseURL } from './baseurl';
+import { MatDividerModule } from '@angular/material/divider';
+import { NavbarComponent } from './layout/navbar/navbar.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +61,8 @@ import { PasswordComponent } from './components/password/password.component';
     InicioComponent,
     RegistroComponent,
     IndexComponent,
-    PasswordComponent
+    PasswordComponent,
+    NavbarComponent
   ],
   imports: [
     AppRoutingModule,
@@ -68,9 +75,13 @@ import { PasswordComponent } from './components/password/password.component';
       preventDuplicates: true,
     }),
     FormsModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule,
+    MatDividerModule,
     MatSliderModule,
     MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
@@ -86,7 +97,7 @@ import { PasswordComponent } from './components/password/password.component';
     MatGridListModule,
     MatMenuModule    
   ],
-  providers: [DataService],
+  providers: [DataService, {provide: 'baseURL', useValue: baseURL} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
