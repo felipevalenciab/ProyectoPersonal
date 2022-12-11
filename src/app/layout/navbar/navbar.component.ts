@@ -1,10 +1,10 @@
 import { Component,  OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
-import { faHomeUser } from '@fortawesome/free-solid-svg-icons';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faHouseChimney } from '@fortawesome/free-solid-svg-icons'
 import { faRocket } from '@fortawesome/free-solid-svg-icons'
+import { faPerson } from '@fortawesome/free-solid-svg-icons';
+import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar',
@@ -13,13 +13,12 @@ import { faRocket } from '@fortawesome/free-solid-svg-icons'
 })
 export class NavbarComponent implements OnInit {
 
-  faHouse = faHouse;
-  faHomeUser = faHomeUser
+  showFiller = false;
   showNavBar:boolean=false;
 
   constructor( private loginService : LoginService,
     private faIconLibrary : FaIconLibrary) {
-      faIconLibrary.addIcons(faHouseChimney,faRocket);
+      faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, faPeopleGroup);
     }
 
   ngOnInit(): void {
