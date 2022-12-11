@@ -24,5 +24,7 @@ export class LoginService {
     return this.dataService.isAuthenticated();
   }
 
-
+  getUserRol(){
+    return this.dataService.getUserRol();
+  }
 }

@@ -1,9 +1,11 @@
 export class Asociado{
     id:string;
-    email:string;
+    asociado:string; //Email
+    rol:string;
 
     constructor(){
-        this.id="";
-        this.email="";
+        this.id=""; 
+        this.asociado="";
+        this.rol="";
     }
 }

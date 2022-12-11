@@ -1,0 +1,38 @@
+.card {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    top: 50px;
+    z-index: 3;
+    width: 100%;
+    height: auto;
+    border-radius: 1.25rem;
+    background: #ffff;
+    text-align: center;
+    box-shadow: 0 100px 100px rgb(0 0 0 / 10%);
+}
+.hrLine{
+    size:8px;
+    color:darkgray;
+}
+
+.form > p {
+    width: 100%;
+    height: 56px;
+    border-radius: 28px;
+}
+
+.matRadioGroup{
+    padding: 10px;
+}
+
+.matInputField{
+    width: 90%;
+    background-color: #ffff;
+}
+
+.matLabel{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16;
+}

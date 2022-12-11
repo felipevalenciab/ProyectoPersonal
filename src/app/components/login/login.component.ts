@@ -1,30 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 import { ToastrService } from 'ngx-toastr';
+import { Asociado } from 'src/app/models/asociado';
+import { delay, timer } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  email!: any;
 
   erroresForm: any = {
-    'email': '',
-    'password': ''
+    email: '',
+    password: '',
   };
 
   mensajesError: any = {
-    'email': {
-      'required': 'La dirección de email es obligatoria.',
-      'email': 'La dirección de email no tiene el formato correcto.'
+    email: {
+      required: 'La dirección de email es obligatoria.',
+      email: 'La dirección de email no tiene el formato correcto.',
     },
-    'password': {
-      'required': 'La contraseña es obligatoria.'
+    password: {
+      required: 'La contraseña es obligatoria.',
     },
-  }
+  };
 
   loginForm!: FormGroup;
 
@@ -32,11 +35,14 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     private toastr: ToastrService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder
+  ) {
     this.crearFormulario();
   }
 
   ngOnInit(): void {
+    this.toastr.remove(2);
+    this.toastr.clear;
   }
 
   crearFormulario() {
@@ -45,14 +51,17 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]],
     });
 
-    this.loginForm.valueChanges.subscribe(datos => {
+    this.loginForm.valueChanges.subscribe((datos) => {
       this.onChangeForm(datos);
     });
     this.onChangeForm();
   }
 
-  onChangeForm(data?: any) { //Para cada uno de los elementos del array, añade el error encontrado
-    if (!this.loginForm) { return; }
+  onChangeForm(data?: any) {
+    //Para cada uno de los elementos del array, añade el error encontrado
+    if (!this.loginForm) {
+      return;
+    }
     const form = this.loginForm;
     for (const field in this.erroresForm) {
       // Se borrarán los mensajes de error previos
@@ -67,41 +76,43 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login() {
-    this.loginService.iniciarSesion(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value)
-      .then(response => {
-        if (response.user.emailVerified) {
-          console.log("Usuario ha iniciado sesion:" + response);
+  onSubmit() {
+    this.loginService.iniciarSesion(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value
+    ).then(response=>{
+      this.loginService.getUserRol().subscribe(rol=>{
+        if(rol[0].rol=="asociado"){
           this.showSuccess();
           this.router.navigate(['/inicio']);
         }else{
-          console.log("Correo electrónico no verificado");
-          this.router.navigate(['/login']);
           this.logout();
           this.showWarn();
         }
-
-      })
-      .catch(error => {
-        this.showError();
-        console.log("Error:" + error);
       });
+    }
+    );
+
   }
 
   logout() {
     this.loginService.cerrarSesion();
+    
   }
 
   showSuccess() {
     this.toastr.success('Inicio de sesión correcto', 'Hola!', {
-      timeOut: 3000,
+      timeOut: 3000      
     });
+    timer(3000).subscribe(x => { })    
   }
 
   showWarn() {
-    this.toastr.warning('Verifica tu correo electrónico para poder iniciar sesión','Atención:', {
-      timeOut: 3000,
-    });
+    this.toastr.warning(
+      'Verifica tu correo electrónico para poder iniciar sesión',
+      'Atención:',
+      {
+        timeOut: 3000,
+      }
+    );
   }
 
   showError() {
@@ -109,5 +120,4 @@ export class LoginComponent implements OnInit {
       timeOut: 3000,
     });
   }
-
 }

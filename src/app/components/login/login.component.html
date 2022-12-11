@@ -4,7 +4,7 @@
         <img class="logo" src="../../../assets/logo.png" />
         <form class="form">
             <div>
-                <form class="form" novalidate [formGroup]="loginForm">
+                <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <!--Correo-->
                     <mat-dialog-content>
                         <mat-form-field class="matFullWidth">
@@ -26,7 +26,7 @@
                         <mat-dialog-actions>
                             <span class="flex-spacer"></span>
                             <button type="submit" mat-stroked-button color="primary" [disabled]="loginForm.invalid"
-                                (click)="login()">Iniciar sesion</button>
+                                >Iniciar sesion</button>
                         </mat-dialog-actions>
                     </mat-dialog-content>
                 </form>

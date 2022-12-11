@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<body>
+    <hr class="hrLine" />
+    <div class="card">
+    <form class="form">
+        <p>
+            <mat-radio-group aria-label="Select an option">
+                <mat-radio-button class="matRadioGroup" value="Actualizacion" checked="true">Actualización de datos</mat-radio-button>
+                <mat-radio-button class="matRadioGroup" value="Ingreso">Ingreso</mat-radio-button>
+                <mat-radio-button class="matRadioGroup" value="Reingreso">Re ingreso</mat-radio-button>
+            </mat-radio-group>
+        </p>
+        <p>
+            <mat-form-field class="matInputField" appearance="fill">
+                <input matInput placeholder="Nombre y apellidos">
+            </mat-form-field>
+        </p>
+
+        <div id="contacto">
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Celular">
+                </mat-form-field>
+            </p>
+        </div>
+
+        <div id="identificacion">
+            <p>
+                <label class="matLabel">Tipo de identificación</label>
+                <br>
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button class="matRadioGroup" value="1">CC</mat-radio-button>
+                    <mat-radio-button class="matRadioGroup" value="2">CE</mat-radio-button>
+                </mat-radio-group>
+            </p>
+            <p>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Número de identificación">
+                </mat-form-field>
+            </p>
+        </div>
+        <div id="expedicionidentificacion">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha de expedición</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </p>
+        </div>
+        <div id="nacimiento">
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Fecha de nacimiento</mat-label>
+                    <input matInput [matDatepicker]="picker2">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="Lugar de nacimiento">
+                </mat-form-field>
+            </p>
+        </div>
+    </form>
+    </div>
+
+
+</body>

@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Auth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword,
-  sendEmailVerification,
-  signOut, getAuth, onAuthStateChanged, User, sendPasswordResetEmail} from '@angular/fire/auth';
-import { addDoc, collection, setDoc, doc } from '@firebase/firestore';
-import { Firestore } from '@angular/fire/firestore';
-
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  sendEmailVerification, signOut, User, sendPasswordResetEmail} from '@angular/fire/auth';
+  import { Firestore, collection, collectionData, setDoc, doc} from '@angular/fire/firestore'
+  import { query, where } from "firebase/firestore";
+  import { CookieService } from 'ngx-cookie-service';
+  import { Observable } from 'rxjs';
+  import { Asociado } from '../models/asociado';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  token: string;
-  username: string;
+  token: any="";
+  username: any="";
+  email: any="";
 
   constructor( private auth:Auth,
-    private firestore:Firestore ) { 
-    this.token="";
-    this.username="";
+    private firestore:Firestore,
+    private cookies:CookieService ) {
   }
 
   registrarAsociado(email:string, password:string){
@@ -32,18 +31,33 @@ export class DataService {
   }
 
   login(email:string, password:string){
-    return signInWithEmailAndPassword(this.auth, email, password);
+    return signInWithEmailAndPassword(this.auth, email, password)
+    .then((userCredential)=>{
+      if(userCredential.user.emailVerified){
+        console.log("Usuario ha iniciado sesion:" + userCredential.user.email);
+        this.email=userCredential.user.email;
+        userCredential.user.getIdToken().then(
+          token => {
+            this.token=token;
+            this.cookies.set("cookieAuth",this.token);
+          }
+        )
+      }else{
+        console.log("Correo electrónico no verificado");
+      }
+    });
   }
 
   logout(){
     return signOut(this.auth)
     .then(response =>{
       this.token="";
+      this.cookies.set("cookieAuth",this.token);
     });
   }
 
   isAuthenticated(){
-    return this.token;
+    return this.cookies.get("cookieAuth");
   }
 
   getUserDetails(){
@@ -74,5 +88,10 @@ export class DataService {
     })
   }
 
-  
+  getUserRol():Observable<Asociado[]>{
+    const dbRef = collection(this.firestore, 'rol');
+    const q = query(dbRef, where("asociado","==",this.email));
+    return collectionData(q, { idField: 'id' }) as Observable<Asociado[]>;
+  }
+
 }

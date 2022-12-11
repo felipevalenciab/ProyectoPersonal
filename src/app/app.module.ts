@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +28,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Material
 import { MatSliderModule } from '@angular/material/slider';
@@ -44,13 +44,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { PasswordComponent } from './components/password/password.component';
 
 //HREF
-import {APP_BASE_HREF} from '@angular/common';
+import { APP_BASE_HREF } from '@angular/common';
 import { baseURL } from './baseurl';
 import { MatDividerModule } from '@angular/material/divider';
 import { NavbarComponent } from './layout/navbar/navbar.component';
+
+//Cookies
+import { CookieService } from 'ngx-cookie-service';
+import { InfopersonalComponent } from './components/infopersonal/infopersonal.component';
+import { InforesidenciaComponent } from './components/inforesidencia/inforesidencia.component';
+import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.component';
 
 @NgModule({
   declarations: [
@@ -62,11 +72,15 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     RegistroComponent,
     IndexComponent,
     PasswordComponent,
-    NavbarComponent
+    NavbarComponent,
+    InfopersonalComponent,
+    InforesidenciaComponent,
+    InfofamiliarComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FontAwesomeModule,
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
@@ -86,6 +100,9 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
@@ -97,7 +114,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     MatGridListModule,
     MatMenuModule    
   ],
-  providers: [DataService, {provide: 'baseURL', useValue: baseURL} ],
+  providers: [CookieService, DataService, {provide: 'baseURL', useValue: baseURL} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
