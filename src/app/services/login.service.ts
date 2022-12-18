@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { DataService } from './data.service';
 
 @Injectable({
@@ -26,5 +27,9 @@ export class LoginService {
 
   getUserRol(){
     return this.dataService.getUserRol();
+  }
+
+  get isLoggedIn(){
+    return this.dataService.isLoggedIn();
   }
 }

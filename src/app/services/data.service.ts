@@ -4,7 +4,8 @@ import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
   import { Firestore, collection, collectionData, setDoc, doc} from '@angular/fire/firestore'
   import { query, where } from "firebase/firestore";
   import { CookieService } from 'ngx-cookie-service';
-  import { Observable } from 'rxjs';
+  import { BehaviorSubject, Observable } from 'rxjs';
+  import { Router } from '@angular/router';
   import { Asociado } from '../models/asociado';
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,12 @@ export class DataService {
   token: any="";
   username: any="";
   email: any="";
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor( private auth:Auth,
     private firestore:Firestore,
-    private cookies:CookieService ) {
+    private cookies:CookieService,
+    private router: Router ) {
   }
 
   registrarAsociado(email:string, password:string){
@@ -40,6 +43,7 @@ export class DataService {
           token => {
             this.token=token;
             this.cookies.set("cookieAuth",this.token);
+            this.loggedIn.next(true);
           }
         )
       }else{
@@ -48,11 +52,17 @@ export class DataService {
     });
   }
 
+  isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
+
   logout(){
     return signOut(this.auth)
     .then(response =>{
       this.token="";
       this.cookies.set("cookieAuth",this.token);
+      this.loggedIn.next(false);
+      this.router.navigate(['/login']);
     });
   }
 

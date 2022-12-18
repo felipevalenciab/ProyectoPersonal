@@ -13,6 +13,7 @@
     place-items: center;
     margin: 0;
     padding: 0 32px;
+    padding-bottom: 100%;
     background: #f5f5f5;
     font-family: "Euclid Circular A";
     animation: rotate 6s infinite alternate linear;
@@ -49,7 +50,6 @@
   .card {
     overflow: hidden;
     position: relative;
-    top: 50px;
     z-index: 3;
     width: 100%;
     height: auto;
