@@ -26,8 +26,6 @@ export class NavbarComponent implements OnInit {
 
   obtenerTokenAsociado(){
     return this.loginService.obtenerTokenAsociado();
-    window.location.reload();
   }
-
 
 }
