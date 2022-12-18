@@ -1,53 +1,57 @@
-<app-navbar></app-navbar>
-<div class="container" fxLayout="column" fxLayoutGap="10px">
-    <form class="example-form">
-        <p>
-            <mat-form-field appearance="fill">
-                <input matInput placeholder="Dirección de residencia">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="fill">
-                <input matInput placeholder="Ciudad">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="fill">
-                <input matInput placeholder="Barrio">
-            </mat-form-field>
-        </p>
-        <p>
-            <mat-form-field appearance="fill">
-                <mat-label>Estrato</mat-label>
-                <select matNativeControl>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                </select>
-            </mat-form-field>
-        </p>
-
-        <p>
-            <label>Tipo de vivienda</label>
+<body class="bodyMaterial">
+    <div class="card">
+        <form class="form">
+            <label class="matTitulo">Información de Vivienda</label>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Dirección">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Barrio">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Ciudad">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField"  appearance="fill">
+                    <mat-label>Estrato</mat-label>
+                    <select matNativeControl>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </mat-form-field>
+            </p>
             <br>
-            <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Propia</mat-radio-button>
-                <mat-radio-button value="2">Alquiler</mat-radio-button>
-                <mat-radio-button value="2">Familiar</mat-radio-button>
-            </mat-radio-group>
-        </p>
-
-        <p>
-            <label>Zona de la vivienda</label>
+            <div>
+                <label>Tipo de vivienda</label>
+                <br>
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button color="primary" class="matRadioGroup" value="1">Propia</mat-radio-button>
+                    <br>
+                    <mat-radio-button color="primary" class="matRadioGroup" value="2">Alquiler</mat-radio-button>
+                    <br>
+                    <mat-radio-button color="primary" class="matRadioGroup" value="2">Familiar</mat-radio-button>
+                </mat-radio-group>
+            </div>
             <br>
-            <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Rural</mat-radio-button>
-                <mat-radio-button value="2">Urbana</mat-radio-button>
-            </mat-radio-group>
-        </p>
-
-    </form>
-</div>
+            <div>
+                <label>Zona de la vivienda</label>
+                <br>
+                <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button color="primary" class="matRadioGroup" value="1">Rural</mat-radio-button>
+                    <br>
+                    <mat-radio-button color="primary" class="matRadioGroup" value="2">Urbana</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </form>
+    </div>
+</body>

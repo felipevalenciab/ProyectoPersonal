@@ -1,5 +1,7 @@
 <mat-toolbar class="matTollBarP" *ngIf="isLoggedIn$ | async as isLoggedIn">
-    <button mat-button (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+    <button mat-button class="matLabelToolBar" (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
+    <a class="matLabelToolBar">App Asociados FEMCristar</a>
+    <span class="rigthSpan"></span>    
     <button mat-button class="flex-box-2" (click)="onLogout()"><label
             class="matLabelToolBar"><fa-icon icon="close"></fa-icon> Salir</label></button>
 </mat-toolbar>

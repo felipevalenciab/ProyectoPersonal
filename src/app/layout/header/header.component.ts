@@ -27,10 +27,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.opened=false;
   }
 
   onLogout(){
     this.authService.cerrarSesion();
+    this.opened=false;
+  }
+
+  inicio(){
+    this.router.navigate(['/inicio']);
+    this.opened=false;
   }
 
   infoPersonal(){
@@ -48,9 +55,6 @@ export class HeaderComponent implements OnInit {
     this.opened=false;
   }
 
-  inicio(){
-    this.router.navigate(['/inicio']);
-    this.opened=false;
-  }
+  
 
 }

@@ -1,81 +1,113 @@
-<app-navbar></app-navbar>
-<div class="container" fxLayout="column" fxLayoutGap="10px">
-    <form class="example-form">
-        <p>
-            <label>Estado civil</label>
-            <br>
-            <mat-radio-group aria-label="Select an option">
-                <mat-radio-button value="1">Soltero</mat-radio-button>
-                <mat-radio-button value="2">Casado</mat-radio-button>
-                <mat-radio-button value="2">Unión libre</mat-radio-button>
-                <mat-radio-button value="2">Separado</mat-radio-button>
-                <mat-radio-button value="2">Viudo</mat-radio-button>
-            </mat-radio-group>
-        </p>
-        <div id="conyuge">
-            <p>
-                <label>¿Su cónyuge labora?</label>
-                <br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Si</mat-radio-button>
-                    <mat-radio-button value="2">No</mat-radio-button>
-                </mat-radio-group>
-            </p>
-            <p>
-                <label>¿Dónde?</label>
-                <br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button value="1">Empresa</mat-radio-button>
-                    <mat-radio-button value="2">Independiente</mat-radio-button>
-                    <mat-radio-button value="2">Pensionada</mat-radio-button>
-                </mat-radio-group>
-            </p>
-            <p>
-                <mat-form-field appearance="fill">
-                    <input matInput placeholder="Salario">
-                </mat-form-field>
-            </p>
-        </div>
-        <div id="grupofamiliar">
-            <label>Información de grupo familiar</label>
-            <p>
-                <mat-form-field appearance="fill">
-                    <input matInput placeholder="Nombre y apellidos">
-                </mat-form-field>
-            </p>
-            <div id="identificacion">
+<body class="bodyMaterial">
+    <div class="card">
+        <form class="form">
+            <label class="matTitulo">Información Familiar</label>
+            <div id="estadocivil">
                 <p>
-                    <label>Tipo de identificación</label>
+                    <label class="matLabel">Estado civil</label>
                     <br>
                     <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button value="1">CC</mat-radio-button>
-                        <mat-radio-button value="2">CE</mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="1">Soltero</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Casado</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Unión libre</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Separado</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Viudo</mat-radio-button>
                     </mat-radio-group>
                 </p>
-                <p>
-                    <mat-form-field appearance="fill">
-                        <input matInput placeholder="Número de identificación">
-                    </mat-form-field>
-                </p>
             </div>
-            <div id="nacimiento">
+            <br>
+            <div id="conyuge">
                 <p>
-                    <mat-form-field appearance="fill">
-                        <mat-label>Fecha de nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker2">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field>
+                    <label class="matLabel">¿Su cónyuge labora?</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup" value="1">Si</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="2">No</mat-radio-button>
+                    </mat-radio-group>
                 </p>
+                <div id="conyugeDonde">
+                    <p>
+                        <label class="matLabel">¿Dónde?</label>
+                        <br>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button color="primary" class="matRadioGroup" value="1">Empresa</mat-radio-button>
+                            <br>
+                            <mat-radio-button color="primary" class="matRadioGroup"
+                                value="2">Independiente</mat-radio-button>
+                            <br>
+                            <mat-radio-button color="primary" class="matRadioGroup"
+                                value="2">Pensionada</mat-radio-button>
+                        </mat-radio-group>
+                    </p>
+                    <br>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Salario">
+                        </mat-form-field>
+                    </p>
+                </div>                
             </div>
-            <p>
-                <mat-form-field appearance="fill">
-                    <input matInput placeholder="Parentesco">
-                </mat-form-field>
-            </p>
-
-        </div>
-
-    </form>
-</div>
+            <br>
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <label class="matLabel">Grupo familiar</label>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <label class="matLabel">Desplegar para añadir miembros</label>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <form novalidate [formGroup]="familiarForm">
+                    <div id="grupofamiliar">
+                        <p>
+                            <mat-form-field class="matInputField" appearance="fill">
+                                <input matInput formControlName="nombreFamiliar" placeholder="Nombre y apellidos">
+                            </mat-form-field>
+                        </p>
+                        <div id="identificacion">
+                            <p>
+                                <label class="matLabel">Tipo de identificación</label>
+                                <br>
+                                <mat-radio-group formControlName="tipoIdFamiliar" aria-label="Select an option">
+                                    <mat-radio-button formControlName="tipoIdFamiliar" color="primary"
+                                        class="matRadioGroup" checked value="1">CC</mat-radio-button>
+                                    <mat-radio-button formControlName="tipoIdFamiliar" color="primary"
+                                        class="matRadioGroup" value="2">CE</mat-radio-button>
+                                </mat-radio-group>
+                            </p>
+                            <p>
+                                <mat-form-field class="matInputField" appearance="fill">
+                                    <input matInput formControlName="numIdFamiliar"
+                                        placeholder="Número de identificación">
+                                </mat-form-field>
+                            </p>
+                        </div>
+                        <div id="nacimiento">
+                            <p>
+                                <mat-form-field class="matInputField" appearance="fill">
+                                    <mat-label>Fecha de nacimiento</mat-label>
+                                    <input formControlName="fechaNacimientoFamiliar" matInput [matDatepicker]="picker2">
+                                    <mat-hint>MM/DD/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker2></mat-datepicker>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                        <p>
+                            <mat-form-field class="matInputField" appearance="fill">
+                                <input matInput formControlName="parentesco" placeholder="Parentesco">
+                            </mat-form-field>
+                        </p>
+                        <button mat-raised-button color="primary" (click)="addFamiliar()"><label
+                                class="matLabelToolBar">Agregar</label></button>
+                    </div>
+                </form>
+            </mat-expansion-panel>
+        </form>
+    </div>
+</body>

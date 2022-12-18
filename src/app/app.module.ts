@@ -47,6 +47,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { PasswordComponent } from './components/password/password.component';
 
@@ -103,6 +104,7 @@ import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.co
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
