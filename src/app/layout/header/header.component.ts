@@ -8,6 +8,7 @@ import { faPerson } from '@fortawesome/free-solid-svg-icons';
 import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
   constructor( private authService:LoginService,
     private faIconLibrary : FaIconLibrary,
     private router: Router ) { 
-      faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, faPeopleGroup, faClose, faBriefcase);
+      faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, 
+        faPeopleGroup, faClose, faBriefcase, faGraduationCap);
     }
 
   ngOnInit() {
@@ -58,6 +60,11 @@ export class HeaderComponent implements OnInit {
 
   infoLaboral(){
     this.router.navigate(['/infolaboral']);
+    this.opened=false;
+  }
+
+  infoAcademica(){
+    this.router.navigate(['/infoacademica']);
     this.opened=false;
   }  
 

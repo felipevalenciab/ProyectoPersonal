@@ -1,3 +1,8 @@
+html,
+body {
+  min-height: 100vh;
+}
+
 .bodyMaterial{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -43,7 +48,7 @@
 h2{
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-weight: bold;
-    color: #C52D23;
+    color: #a30000;
 }
 
 .identificacion{

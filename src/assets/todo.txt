@@ -6,4 +6,7 @@ Visual:
 - Si es CC -> País: Colombia, si es CE -> País: Rellenar.
 - Tabla Dinámica Familiares
 - Si Cónyuge Labora -> Habilitar ¿Dónde?
+- Si Estudios Otro -> Habilitar ¿Cuál?
 - Quitar efectos visuales por defecto. Ej: subrayado azul de los campos
+- Cambiar Estado Civil -> Radio To List
+- Si los Radio están en Div se ajustan automaticamente
