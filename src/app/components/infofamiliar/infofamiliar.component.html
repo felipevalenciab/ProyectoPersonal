@@ -1,7 +1,7 @@
 <body class="bodyMaterial">
     <div class="card">
         <form class="form">
-            <label class="matTitulo">Información Familiar</label>
+            <h2 class="matTitulo">Información Familiar</h2>
             <div id="estadocivil">
                 <p>
                     <label class="matLabel">Estado civil</label>
@@ -19,7 +19,6 @@
                     </mat-radio-group>
                 </p>
             </div>
-            <br>
             <div id="conyuge">
                 <p>
                     <label class="matLabel">¿Su cónyuge labora?</label>
@@ -44,7 +43,6 @@
                                 value="2">Pensionada</mat-radio-button>
                         </mat-radio-group>
                     </p>
-                    <br>
                     <p>
                         <mat-form-field class="matInputField" appearance="fill">
                             <input matInput placeholder="Salario">
@@ -52,7 +50,6 @@
                     </p>
                 </div>                
             </div>
-            <br>
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title>

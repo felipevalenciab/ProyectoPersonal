@@ -1,6 +1,5 @@
 <mat-toolbar class="matTollBarP" *ngIf="isLoggedIn$ | async as isLoggedIn">
-    <button mat-button class="matLabelToolBar" (click)="opened=!opened"><mat-icon>menu</mat-icon></button>
-    <a class="matLabelToolBar">App Asociados FEMCristar</a>
+    <button mat-button class="matLabelToolBar" (click)="opened=!opened"><mat-icon>menu</mat-icon> Menú</button>
     <span class="rigthSpan"></span>    
     <button mat-button class="flex-box-2" (click)="onLogout()"><label
             class="matLabelToolBar"><fa-icon icon="close"></fa-icon> Salir</label></button>
@@ -16,6 +15,10 @@
                     Personal</label></button>
         </mat-list>
         <mat-list>
+            <button mat-button (click)="infoLaboral()"><label class="matLabel"><fa-icon icon="briefcase"></fa-icon>
+                    Laboral</label></button>
+        </mat-list>
+        <mat-list>
             <button mat-button (click)="infoVivienda()"><label class="matLabel"><fa-icon icon="house-chimney"></fa-icon>
                     Vivienda</label></button>
         </mat-list>
@@ -23,6 +26,7 @@
             <button mat-button (click)="infoFamiliar()"><label class="matLabel"><fa-icon icon="people-group"></fa-icon>
                     Familiar</label></button>
         </mat-list>
+        
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>

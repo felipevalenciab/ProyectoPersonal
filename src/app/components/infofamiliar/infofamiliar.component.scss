@@ -28,8 +28,6 @@
 }
 
 .form>p {
-    width: 100%;
-    height: 56px;
     border-radius: 28px;
 }
 
@@ -47,9 +45,10 @@
     font-size: 16;
 }
 
-.matTitulo {
+h2{
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    text-align: left;
+    font-weight: bold;
+    color: #C52D23;
 }
 
 .identificacion {

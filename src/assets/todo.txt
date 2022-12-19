@@ -1,0 +1,9 @@
+Funcionamiento:
+- Si se recarga página o presiona F5 se pierde el menú -> EventEmmiter
+- PopUp inicio/cierre sesión
+
+Visual:
+- Si es CC -> País: Colombia, si es CE -> País: Rellenar.
+- Tabla Dinámica Familiares
+- Si Cónyuge Labora -> Habilitar ¿Dónde?
+- Quitar efectos visuales por defecto. Ej: subrayado azul de los campos

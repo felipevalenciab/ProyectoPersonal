@@ -1,0 +1,66 @@
+<body class="bodyMaterial">
+    <div class="card">
+        <form class="form">
+            <h2>Información Laboral</h2>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Empresa donde labora">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Dirección laboral">
+                </mat-form-field>
+            </p>
+            <div id="fechaingreso">
+                <p>
+                    <mat-form-field class="matInputField" appearance="fill">
+                        <mat-label class="matLabel">Fecha de ingreso a la Empresa</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </p>
+            </div>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Cargo">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Código">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Salario">
+                </mat-form-field>
+            </p>
+            <br>
+            <div>
+                <p>
+                    <label class="matLabel">¿Administra recursos públicos?</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup" value="RPSI">SI</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="RPNO">NO</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label class="matLabel">¿Es Persona Expuesta Públicamente (PEP)?</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup" value="PEPSI">SI</mat-radio-button>
+                        <br>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="PEPNO">NO</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
+        </form>
+    </div>
+</body>

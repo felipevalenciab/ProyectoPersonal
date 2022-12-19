@@ -1,24 +1,25 @@
 <body class="bodyMaterial">
     <div class="card">
         <form class="form">
-            <label class="matTitulo">Información Personal</label>
-            <p>
-                <label class="matLabel">Tipo de Solicitud</label>
-                <br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button color="primary" class="matRadioGroup" value="Actualizacion"
-                        checked="true">Actualización de datos</mat-radio-button>
-                    <mat-radio-button color="primary" class="matRadioGroup" value="Ingreso">Ingreso</mat-radio-button>
-                    <mat-radio-button color="primary" class="matRadioGroup" value="Reingreso">Re
-                        ingreso</mat-radio-button>
-                </mat-radio-group>
-            </p>
+            <h2>Información Personal</h2>
+            <div>
+                <p>
+                    <label class="matLabel">Tipo de Solicitud</label>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup" value="Actualizacion" checked="true">
+                            Actualización de datos</mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="Ingreso">Ingreso
+                        </mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="Reingreso">Re
+                            ingreso</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
                     <input matInput placeholder="Nombre y apellidos">
                 </mat-form-field>
             </p>
-
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
                     <input matInput placeholder="Correo">
@@ -30,21 +31,24 @@
                 </mat-form-field>
             </p>
             <br>
-            <p>
-                <label class="matLabel">Tipo de Identificación</label>
-                <br>
-                <mat-radio-group aria-label="Select an option">
-                    <mat-radio-button color="primary" class="matRadioGroup" value="CC">Cédula
-                        Ciudadania</mat-radio-button>
-                    <mat-radio-button color="primary" class="matRadioGroup" value="CE">Cédula
-                        Extranjeria</mat-radio-button>
-                </mat-radio-group>
-            </p>
+            <div>
+                <p>
+                    <label class="matLabel">Tipo de Identificación</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup" value="CC">Cédula
+                            Ciudadania</mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">Cédula
+                            Extranjeria</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
                     <input matInput placeholder="Número de identificación">
                 </mat-form-field>
             </p>
+            <br>
             <div id="expedicionidentificacion">
                 <p>
                     <mat-form-field class="matInputField" appearance="fill">
@@ -66,12 +70,22 @@
                         <mat-datepicker #picker2></mat-datepicker>
                     </mat-form-field>
                 </p>
-                <p>
-                    <mat-form-field class="matInputField" appearance="fill">
-                        <input matInput placeholder="Lugar de nacimiento">
-                    </mat-form-field>
-                </p>
             </div>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Ciudad de Nacimiento">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Departamento de Nacimiento">
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="País de Nacimiento">
+                </mat-form-field>
+            </p>
         </form>
     </div>
 </body>

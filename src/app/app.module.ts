@@ -54,13 +54,13 @@ import { PasswordComponent } from './components/password/password.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { baseURL } from './baseurl';
 import { MatDividerModule } from '@angular/material/divider';
-import { NavbarComponent } from './layout/navbar/navbar.component';
 
 //Cookies
 import { CookieService } from 'ngx-cookie-service';
 import { InfopersonalComponent } from './components/infopersonal/infopersonal.component';
 import { InforesidenciaComponent } from './components/inforesidencia/inforesidencia.component';
 import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.component';
+import { InfolaboralComponent } from './components/infolaboral/infolaboral.component';
 
 @NgModule({
   declarations: [
@@ -71,10 +71,10 @@ import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.co
     InicioComponent,
     RegistroComponent,
     PasswordComponent,
-    NavbarComponent,
     InfopersonalComponent,
     InforesidenciaComponent,
-    InfofamiliarComponent
+    InfofamiliarComponent,
+    InfolaboralComponent
   ],
   imports: [
     AppRoutingModule,
