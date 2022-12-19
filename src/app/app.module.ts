@@ -36,7 +36,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { IndexComponent } from './pages/index/index.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -71,7 +70,6 @@ import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.co
     FooterComponent,
     InicioComponent,
     RegistroComponent,
-    IndexComponent,
     PasswordComponent,
     NavbarComponent,
     InfopersonalComponent,
