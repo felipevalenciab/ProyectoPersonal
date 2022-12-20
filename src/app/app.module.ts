@@ -62,6 +62,7 @@ import { InforesidenciaComponent } from './components/inforesidencia/inforesiden
 import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.component';
 import { InfolaboralComponent } from './components/infolaboral/infolaboral.component';
 import { InfoacademicaComponent } from './components/infoacademica/infoacademica.component';
+import { InfofinancieraComponent } from './components/infofinanciera/infofinanciera.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { InfoacademicaComponent } from './components/infoacademica/infoacademica
     InforesidenciaComponent,
     InfofamiliarComponent,
     InfolaboralComponent,
-    InfoacademicaComponent
+    InfoacademicaComponent,
+    InfofinancieraComponent
   ],
   imports: [
     AppRoutingModule,

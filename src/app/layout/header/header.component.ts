@@ -9,6 +9,7 @@ import { faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit {
     private faIconLibrary : FaIconLibrary,
     private router: Router ) { 
       faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, 
-        faPeopleGroup, faClose, faBriefcase, faGraduationCap);
+        faPeopleGroup, faClose, faBriefcase, faGraduationCap, faDollarSign);
     }
 
   ngOnInit() {
@@ -48,6 +49,16 @@ export class HeaderComponent implements OnInit {
     this.opened=false;
   }
 
+  infoLaboral(){
+    this.router.navigate(['/infolaboral']);
+    this.opened=false;
+  }
+
+  infoAcademica(){
+    this.router.navigate(['/infoacademica']);
+    this.opened=false;
+  } 
+
   infoVivienda(){
     this.router.navigate(['/infovivienda']);
     this.opened=false;
@@ -57,15 +68,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/infofamiliar']);
     this.opened=false;
   }
-
-  infoLaboral(){
-    this.router.navigate(['/infolaboral']);
+  
+  infoFinanciera(){
+    this.router.navigate(['/infofinanciera']);
     this.opened=false;
   }
-
-  infoAcademica(){
-    this.router.navigate(['/infoacademica']);
-    this.opened=false;
-  }  
 
 }
