@@ -10,6 +10,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit {
     private faIconLibrary : FaIconLibrary,
     private router: Router ) { 
       faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, 
-        faPeopleGroup, faClose, faBriefcase, faGraduationCap, faDollarSign);
+        faPeopleGroup, faClose, faBriefcase, faGraduationCap, 
+        faDollarSign, faListCheck);
     }
 
   ngOnInit() {
@@ -71,6 +73,11 @@ export class HeaderComponent implements OnInit {
   
   infoFinanciera(){
     this.router.navigate(['/infofinanciera']);
+    this.opened=false;
+  }
+
+  autorizaciones(){
+    this.router.navigate(['/autorizaciones']);
     this.opened=false;
   }
 

@@ -13,6 +13,7 @@ import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.co
 import { InfolaboralComponent } from './components/infolaboral/infolaboral.component';
 import { InfoacademicaComponent } from './components/infoacademica/infoacademica.component';
 import { InfofinancieraComponent } from './components/infofinanciera/infofinanciera.component';
+import { AutorizacionesComponent } from './components/autorizaciones/autorizaciones.component';
 
 //Rutas
 export const routes: Routes = [
@@ -26,7 +27,8 @@ export const routes: Routes = [
   { path: 'infofamiliar',  component: InfofamiliarComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
   { path: 'infolaboral',  component: InfolaboralComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
   { path: 'infoacademica',  component: InfoacademicaComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
-  { path: 'infofinanciera',  component: InfofinancieraComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) }
+  { path: 'infofinanciera',  component: InfofinancieraComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
+  { path: 'autorizaciones',  component: AutorizacionesComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) }
 ];
 
 @NgModule({

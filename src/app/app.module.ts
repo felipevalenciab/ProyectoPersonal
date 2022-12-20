@@ -47,6 +47,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { PasswordComponent } from './components/password/password.component';
 
@@ -63,6 +64,7 @@ import { InfofamiliarComponent } from './components/infofamiliar/infofamiliar.co
 import { InfolaboralComponent } from './components/infolaboral/infolaboral.component';
 import { InfoacademicaComponent } from './components/infoacademica/infoacademica.component';
 import { InfofinancieraComponent } from './components/infofinanciera/infofinanciera.component';
+import { AutorizacionesComponent } from './components/autorizaciones/autorizaciones.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,8 @@ import { InfofinancieraComponent } from './components/infofinanciera/infofinanci
     InfofamiliarComponent,
     InfolaboralComponent,
     InfoacademicaComponent,
-    InfofinancieraComponent
+    InfofinancieraComponent,
+    AutorizacionesComponent
   ],
   imports: [
     AppRoutingModule,
@@ -107,6 +110,7 @@ import { InfofinancieraComponent } from './components/infofinanciera/infofinanci
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
+    MatCheckboxModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
