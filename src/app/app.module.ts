@@ -65,6 +65,9 @@ import { InfolaboralComponent } from './components/infolaboral/infolaboral.compo
 import { InfoacademicaComponent } from './components/infoacademica/infoacademica.component';
 import { InfofinancieraComponent } from './components/infofinanciera/infofinanciera.component';
 import { AutorizacionesComponent } from './components/autorizaciones/autorizaciones.component';
+import { DeduccionesComponent } from './components/deducciones/deducciones.component';
+import { FirmaComponent } from './components/firma/firma.component';
+import { ObservacionesComponent } from './components/observaciones/observaciones.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +84,10 @@ import { AutorizacionesComponent } from './components/autorizaciones/autorizacio
     InfolaboralComponent,
     InfoacademicaComponent,
     InfofinancieraComponent,
-    AutorizacionesComponent
+    AutorizacionesComponent,
+    DeduccionesComponent,
+    FirmaComponent,
+    ObservacionesComponent
   ],
   imports: [
     AppRoutingModule,

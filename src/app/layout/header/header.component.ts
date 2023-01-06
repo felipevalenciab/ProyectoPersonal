@@ -11,6 +11,8 @@ import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
+import { faSignature } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,7 +30,8 @@ export class HeaderComponent implements OnInit {
     private router: Router ) { 
       faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, 
         faPeopleGroup, faClose, faBriefcase, faGraduationCap, 
-        faDollarSign, faListCheck);
+        faDollarSign, faListCheck, faMoneyBillTransfer,
+        faSignature);
     }
 
   ngOnInit() {
@@ -78,6 +81,16 @@ export class HeaderComponent implements OnInit {
 
   autorizaciones(){
     this.router.navigate(['/autorizaciones']);
+    this.opened=false;
+  }
+
+  deducciones(){
+    this.router.navigate(['/deducciones']);
+    this.opened=false;
+  }
+
+  firma(){
+    this.router.navigate(['/firma']);
     this.opened=false;
   }
 

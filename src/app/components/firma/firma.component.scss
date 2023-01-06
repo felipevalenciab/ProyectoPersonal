@@ -4,8 +4,6 @@ body {
 }
 
 .bodyMaterial{
-    margin-top: 20px;
-    margin-bottom: 20px;
     margin-left: 10px;
     padding-left: 10px;
     margin-right: 10px;
@@ -16,11 +14,11 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     top: 50px;
     z-index: 3;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 1.25rem;
     background: #ffff;
     text-align: center;
@@ -50,6 +48,7 @@ body {
 }
 
 h2{
+    padding-top: 25px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     font-weight: bold;
     color: #a30000;
@@ -62,3 +61,22 @@ h2{
 .flexExpand {
     flex: 1 1 auto;
 }
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width:400px;
+    height:200px;
+    background-color: white;
+  }

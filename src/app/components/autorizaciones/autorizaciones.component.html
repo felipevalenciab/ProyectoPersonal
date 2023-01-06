@@ -4,9 +4,9 @@
             <h2>Autorizaciones</h2>
             <div>
                 <label class="matTittle">Consulta y reporte en centrales de riesgo</label>
-                <br>                
+                <br>
                 <p class="textoP">
-                    <mat-checkbox color="primary"></mat-checkbox>
+                    <mat-checkbox color="primary" id="centrales" checked="false"></mat-checkbox>
                     Autorizo voluntariamene a FEMCRISTAR para consultar, procesar, reportar,
                     conservar, suministrar y actualizar cualquier información de carácter financiero
                     debídamente constituida y comercial desde el momento de la solicitud de crédito
@@ -20,19 +20,68 @@
                 <label class="matTittle">Declaración de origenes de fondos</label>
                 <p class="textoP">
                     Obrando en nombre propio, de manera voluntaria y dando certeza de que todo lo aquí consignado
-                    por mi es cierto, declaro que mis ingresos y bienes provienen del desarrollo (detalle de la Ocupación,
+                    por mi es cierto, declaro que mis ingresos y bienes provienen del desarrollo (detalle de la
+                    Ocupación,
                     Oficio, Profesión, Negocio(s), etc.):
                     <mat-form-field class="matInputField" appearance="fill">
                         <input matInput placeholder="Detalle...">
                     </mat-form-field>
                 </p>
-                <br>
-                <p>
-                    <mat-checkbox class="primary">Declaro que esos recursos no provienen de ninguna actividad ilícita de 
-                        las contempladas en el Código Penal Colombiano o en cualquier norma que lo modifique o adicione.</mat-checkbox>
-                    
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="origenes1" checked="false"></mat-checkbox>
+                    Declaro que esos recursos no provienen de ninguna actividad ilícita de
+                    las contempladas en el Código Penal Colombiano o en cualquier norma que lo modifique o adicione.
+
                 </p>
-            </div>         
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="origenes2" checked="false"></mat-checkbox>
+                    Declaro que NO he admitido NI admitiré que terceros realicen transacciones a mi nombre, provenientes
+                    las actividades ilicitas de las contempladas en el código penal Colombiano o en cualquier norma que
+                    lo
+                    modifique o adicione y que NO efectuaré transacciones destinadas a tales actividades o a favor de
+                    personas
+                    que estén relacionadas con las mismas.
+
+                </p>
+            </div>
+            <div>
+                <label class="matTittle">Otras declaraciones bajo juramento</label>
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="otdeclaraciones1" checked="false"></mat-checkbox>
+                    Declaro que esta afiliación es enteramente voluntaria.
+                </p>
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="otdeclaraciones2" checked="false"></mat-checkbox>
+                    Declaro que me someteré y cumpliré coon los estatutos y reglamentos de FEMCRISTAR.
+                </p>
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="otdeclaraciones3" checked="false"></mat-checkbox>
+                    Autorizo voluntariamente a FEMCRISTAR para enviar mensajes SMS y de correo electrónico,
+                    relativos a mi relación con la entidad, a mi cuenta de correo electrónico y teléfono
+                    móvil reportados como de mi propiedad.
+                </p>
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="otdeclaraciones4" checked="false"></mat-checkbox>
+                    Certifico que la información suministrada es verídica y autorizo a FEMCRISTAR para
+                    que la verifique.
+                </p>
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="otdeclaraciones5" checked="false"></mat-checkbox>
+                    Estoy informado de mi obligación de actualizar anualmente la información de solicite FEMCRISTAR
+                    para cada producto o servicio que utilice.
+                </p>
+                <p class="textoP">
+                    <mat-checkbox color="primary" id="otdeclaraciones6" checked="false"></mat-checkbox>
+                    De acuerdo a la ley 1581 de 2012 (Habeas Data) doy mi autorización para la circulación de la
+                    información.
+                </p>
+            </div>
+            <div>
+                <label class="matTittle">Deducciones</label>
+                <p class="textoP">
+                </p>
+            </div>
+
         </form>
     </div>
 </body>
