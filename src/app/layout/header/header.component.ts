@@ -16,6 +16,7 @@ import { faSignature } from '@fortawesome/free-solid-svg-icons';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -23,12 +24,13 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class HeaderComponent implements OnInit {
 
-  opened=false;
+  opened=true;
   private cookieValue!:string;
 
   constructor( private authService:LoginService,
     private faIconLibrary : FaIconLibrary,
     private router: Router, private cdRef : ChangeDetectorRef,
+    private toastr: ToastrService,
     private cookieService: CookieService) { 
       faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, 
         faPeopleGroup, faClose, faBriefcase, faGraduationCap, 
@@ -37,6 +39,7 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit() {
+    this.opened=true;
   }
 
   isLoggedIn(){
@@ -52,6 +55,13 @@ export class HeaderComponent implements OnInit {
   onLogout(){
     this.authService.cerrarSesion();
     this.opened=false;
+    this.showLogOut();
+  }
+
+  showLogOut() {
+    this.toastr.success('Cierre de sesión exitoso', 'Adiós!', {
+      timeOut: 3000,
+    });
   }
 
   inicio(){

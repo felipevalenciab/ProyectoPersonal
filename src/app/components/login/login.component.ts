@@ -102,10 +102,10 @@ export class LoginComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success(
-      'Inicio de sesión correcto',
+      'Bienvenid@!',
       'Hola!',
       {
-        timeOut: 5000
+        timeOut: 2000
       });
     timer(3000).subscribe(x => { })
   }

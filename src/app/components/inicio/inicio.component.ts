@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
-
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -13,7 +12,7 @@ export class InicioComponent implements OnInit {
 
   userAuth:string;
   isLogged!:boolean;
-  opened=false;
+  opened=true;
   private cookieValue!:string;
 
   constructor(
@@ -26,6 +25,7 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.opened=true;
   }
 
   logout(){

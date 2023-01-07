@@ -30,9 +30,7 @@ export const routes: Routes = [
   { path: 'infolaboral',  component: InfolaboralComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
   { path: 'infoacademica',  component: InfoacademicaComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
   { path: 'infofinanciera',  component: InfofinancieraComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
-  { path: 'autorizaciones',  component: AutorizacionesComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
-  { path: 'deducciones',  component: DeduccionesComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) },
-  { path: 'firma',  component: FirmaComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) }
+  { path: 'autorizaciones',  component: AutorizacionesComponent, ...canActivate(()=> redirectUnauthorizedTo(['/login'])) }
 ];
 
 @NgModule({

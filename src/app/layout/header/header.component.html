@@ -4,7 +4,7 @@
     <button mat-button class="flex-box-2" (click)="onLogout()"><label
             class="matLabelToolBar"><fa-icon icon="close"></fa-icon> Salir</label></button>
 </mat-toolbar>
-<mat-sidenav-container class="matHeader">
+<mat-sidenav-container class="matHeader" >
     <mat-sidenav [(opened)]="opened" *ngIf="isLoggedIn()" >
         <mat-list>
             <button mat-button (click)="inicio()"><label class="matLabel"><fa-icon icon="rocket"></fa-icon>
@@ -37,16 +37,7 @@
         <mat-list>
             <button mat-button (click)="autorizaciones()"><label class="matLabel"><fa-icon icon="list-check"></fa-icon>
                     Autorizaciones</label></button>
-        </mat-list>
-        <mat-list>
-            <button mat-button (click)="deducciones()"><label class="matLabel"><fa-icon icon="money-bill-transfer"></fa-icon>
-                    Deducciones</label></button>
-        </mat-list>
-        <mat-list>
-            <button mat-button (click)="firma()"><label class="matLabel"><fa-icon icon="signature"></fa-icon>
-                    Firma</label></button>
-        </mat-list>
-                
+        </mat-list>                
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
