@@ -35,7 +35,7 @@ export class RegistroComponent implements OnInit {
     },
     'password': {
       'required': 'La contraseña es obligatoria',
-      'minlength': 'Introduce mínimo 7 carácteres',
+      'minlength': 'Introduce mínimo 4 carácteres',
     },
   }
 
@@ -57,7 +57,7 @@ export class RegistroComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       apellidos: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(7)]]
+      password: ['', [Validators.required, Validators.minLength(4)]]
     });
 
     this.registerForm.valueChanges.subscribe(datos =>{
@@ -86,6 +86,7 @@ export class RegistroComponent implements OnInit {
     this.registroService.registrarAsociado(this.registerForm.get('email')?.value, this.registerForm.get('password')?.value)
       .then(response => {
         console.log("Registro exitoso: " + response);
+        this.showSuccess();
         this.router.navigate(['/login']);
       })
       .catch(error => {
@@ -95,7 +96,7 @@ export class RegistroComponent implements OnInit {
   }
 
   showSuccess(){
-    this.toastr.success('Te has registrado correctamente. Por favor, confima tu dirección de correo eléctronico.', 'Bienvenid@!',{
+    this.toastr.success('Registro correcto. Válida el correo enviado a tu Email (Revisa el correo de SPAM).', 'Bienvenid@!',{
       timeOut: 5000,
     }); 
   }

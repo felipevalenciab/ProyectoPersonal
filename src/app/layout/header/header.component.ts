@@ -13,8 +13,9 @@ import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 import { faSignature } from '@fortawesome/free-solid-svg-icons';
+import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,12 +23,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn$!: Observable<boolean>;
   opened=false;
+  private cookieValue!:string;
 
   constructor( private authService:LoginService,
     private faIconLibrary : FaIconLibrary,
-    private router: Router ) { 
+    private router: Router, private cdRef : ChangeDetectorRef,
+    private cookieService: CookieService) { 
       faIconLibrary.addIcons(faRocket, faPerson, faHouseChimney, 
         faPeopleGroup, faClose, faBriefcase, faGraduationCap, 
         faDollarSign, faListCheck, faMoneyBillTransfer,
@@ -35,8 +37,16 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService.isLoggedIn;
-    this.opened=false;
+  }
+
+  isLoggedIn(){
+    this.cookieValue = this.cookieService.get('cookieAuth');
+    if(this.cookieValue!=""){
+      return true;
+    }
+    else{
+      return false;
+    }
   }
 
   onLogout(){

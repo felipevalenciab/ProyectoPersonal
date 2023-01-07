@@ -3,89 +3,118 @@
         <form class="form">
             <h2>Información Personal</h2>
             <div>
-                <p>
-                    <label class="matLabel">Tipo de Solicitud</label>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button color="primary" class="matRadioGroup" value="Actualizacion" checked="true">
-                            Actualización de datos</mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="Ingreso">Ingreso
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="Reingreso">Re
-                            ingreso</mat-radio-button>
-                    </mat-radio-group>
-                </p>
-            </div>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Nombre y apellidos">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Correo">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Celular">
-                </mat-form-field>
-            </p>
-            <br>
-            <div>
-                <p>
-                    <label class="matLabel">Tipo de Identificación</label>
+                <form novalidate [formGroup]="personalForml" (ngSubmit)="onSubmit()">
+                    <div>
+                        <p>
+                            <label class="matLabel">Tipo de Solicitud</label>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button color="primary" class="matRadioGroup" value="Actualizacion"
+                                    checked="true">
+                                    Actualización de datos</mat-radio-button>
+                                <mat-radio-button color="primary" class="matRadioGroup" value="Ingreso">Ingreso
+                                </mat-radio-button>
+                                <mat-radio-button color="primary" class="matRadioGroup" value="Reingreso">Re
+                                    ingreso</mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                    </div>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Nombre y apellidos" formControlName="nombre" type="text" required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.nombre)">{{erroresForm.nombre}}</span>
+                              </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Correo" formControlName="email" type="email" email required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.email)">{{erroresForm.email}}</span>
+                              </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Celular" formControlName="celular" type="tel" pattern="[0-9]*"
+                                required="">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.celular)">{{erroresForm.celular}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
                     <br>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CC">Cédula
-                            Ciudadania</mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">Cédula
-                            Extranjeria</mat-radio-button>
-                    </mat-radio-group>
-                </p>
+                    <div>
+                        <p>
+                            <label class="matLabel">Tipo de Identificación</label>
+                            <br>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button color="primary" class="matRadioGroup" value="CC" checked="true">
+                                    Cédula Ciudadania
+                                </mat-radio-button>
+                                <mat-radio-button color="primary" class="matRadioGroup" value="CE">
+                                    Cédula Extranjeria
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                    </div>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Número de identificación" formControlName="numeroid" type="text" required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.numeroid)">{{erroresForm.numeroid}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <br>
+                    <div id="expedicionidentificacion">
+                        <p>
+                            <mat-form-field class="matInputField" appearance="fill">
+                                <mat-label class="matLabel">Fecha de expedición</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="fechaexpe" type="date" required>
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <div id="nacimiento">
+                        <p>
+                            <mat-form-field class="matInputField" appearance="fill">
+                                <mat-label>Fecha de nacimiento</mat-label>
+                                <input matInput [matDatepicker]="picker2" formControlName="fechanaci" type="date" required>
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                                <mat-datepicker #picker2></mat-datepicker>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Ciudad de Nacimiento" formControlName="ciudad" type="text" required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.ciudad)">{{erroresForm.ciudad}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Departamento de Nacimiento" formControlName="departamento" type="text" required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.departamento)">{{erroresForm.departamento}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="País de Nacimiento" formControlName="pais" type="text" required>
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.pais)">{{erroresForm.pais}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                </form>
             </div>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Número de identificación">
-                </mat-form-field>
-            </p>
-            <br>
-            <div id="expedicionidentificacion">
-                <p>
-                    <mat-form-field class="matInputField" appearance="fill">
-                        <mat-label class="matLabel">Fecha de expedición</mat-label>
-                        <input matInput [matDatepicker]="picker">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </p>
-            </div>
-            <div id="nacimiento">
-                <p>
-                    <mat-form-field class="matInputField" appearance="fill">
-                        <mat-label>Fecha de nacimiento</mat-label>
-                        <input matInput [matDatepicker]="picker2">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                        <mat-datepicker #picker2></mat-datepicker>
-                    </mat-form-field>
-                </p>
-            </div>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Ciudad de Nacimiento">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Departamento de Nacimiento">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="País de Nacimiento">
-                </mat-form-field>
-            </p>
         </form>
     </div>
 </body>

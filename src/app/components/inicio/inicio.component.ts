@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -11,18 +12,20 @@ import { LoginService } from 'src/app/services/login.service';
 export class InicioComponent implements OnInit {
 
   userAuth:string;
+  isLogged!:boolean;
+  opened=false;
+  private cookieValue!:string;
 
   constructor(
     private loginService: LoginService,
     private router: Router,
     private toastr: ToastrService,
+    private cookieService: CookieService
   ) {
     this.userAuth="";
   }
 
   ngOnInit(): void {
-    this.userAuth=this.loginService.obtenerTokenAsociado();
-    
   }
 
   logout(){

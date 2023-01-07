@@ -13,6 +13,7 @@ import { delay, timer } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
   email!: any;
+  userCredential!: any;
 
   erroresForm: any = {
     email: '',
@@ -77,20 +78,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loginService.iniciarSesion(this.loginForm.get('email')?.value,this.loginForm.get('password')?.value
-    ).then(response=>{
-      this.loginService.getUserRol().subscribe(rol=>{
-        if(rol[0].rol=="asociado"){
+    this.loginService.iniciarSesion(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value)
+      .then((userCredential) => {
+        if (userCredential.user.emailVerified) {
+          this.loginService.createCookie(userCredential.user.getIdToken(), userCredential.user.email);
           this.showSuccess();
           this.router.navigate(['/inicio']);
-        }else{
-          this.logout();
+        } else {
           this.showWarn();
+          console.log("pendiente verificar");
         }
+      })
+      .catch((error) => {
+        this.showError();
+        console.log(error.code);
+        console.log(error.message);
       });
-    }
-    );
-
   }
 
   logout() {
@@ -98,25 +101,31 @@ export class LoginComponent implements OnInit {
   }
 
   showSuccess() {
-    this.toastr.success('Inicio de sesión correcto', 'Hola!', {
-      timeOut: 3000      
-    });
-    timer(3000).subscribe(x => { })    
+    this.toastr.success(
+      'Inicio de sesión correcto',
+      'Hola!',
+      {
+        timeOut: 5000
+      });
+    timer(3000).subscribe(x => { })
   }
 
   showWarn() {
     this.toastr.warning(
-      'Verifica tu correo electrónico para poder iniciar sesión',
+      'Valida tu email. Revisa tu bandeja de entrada y bandeja spam',
       'Atención:',
       {
-        timeOut: 3000,
+        timeOut: 5000,
       }
     );
   }
 
   showError() {
-    this.toastr.error('Usuario o contraseña inválidos', 'Error:', {
-      timeOut: 3000,
-    });
+    this.toastr.error(
+      'Usuario y/o contraseña inválidos',
+      'Error:',
+      {
+        timeOut: 5000,
+      });
   }
 }

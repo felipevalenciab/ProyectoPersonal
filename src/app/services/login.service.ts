@@ -14,7 +14,11 @@ export class LoginService {
   }
 
   iniciarSesion(email:string, password:string){
-    return this.dataService.login(email, password)
+    return this.dataService.login3(email, password)
+  }
+
+  createCookie(token:any, nombre: any){
+    return this.dataService.createCookie(token, nombre);
   }
 
   cerrarSesion(){
@@ -31,5 +35,9 @@ export class LoginService {
 
   get isLoggedIn(){
     return this.dataService.isLoggedIn();
+  }
+
+  getIsAuth(){
+    return this.dataService.isAuthenticated();
   }
 }
