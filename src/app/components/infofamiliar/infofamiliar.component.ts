@@ -9,20 +9,46 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class InfofamiliarComponent implements OnInit {
 
   panelOpenState = false;
-  familiar = {nombreFamiliar: '', tipoIdFamiliar: '', numIdFamiliar: '', fechaNacimientoFamiliar: '', parentesco: ''};
 
+  familiar = {nombreFamiliar: '', tipoIdFamiliar: '', numIdFamiliar: '', fechaNacimientoFamiliar: '', parentesco: ''};
+  
+  infoestadocivil: string [] = [
+    'Soltero',
+    'Casado',
+    'Unión libre',
+    'Separado',
+    'Viudo'
+  ];
+
+  infodondelabora: string [] = [
+    'Empresa',
+    'Independiente',
+    'Pensionada'
+  ];
+
+  personalForm!: FormGroup;
   familiarForm!: FormGroup;
 
+  erroresPersonalForm: any = {
+    'salario': ''
+  };
+
   erroresForm: any = {
-    'nombreFamiliar': '',
+    'nombrefamiliar': '',
     'tipoIdFamiliar': '',
     'numIdFamiliar': '',
     'fechaNacimientoFamiliar': '',
     'parentesco': ''
   };
 
+  mensajesErrorPersonal: any = {
+    'salario': {
+      'required': 'El nombre es obligatorio.'
+    },
+  }
+
   mensajesErrorFamiliar: any = {
-    'nombreFamiliar': {
+    'nombrefamiliar': {
       'required': 'El nombre es obligatorio.',
       'minlength': 'El nombre debe tener una longitud mínima de 2 caracteres.',
       'maxlength': 'El nombre no puede exceder de 25 caracteres.'
@@ -32,7 +58,8 @@ export class InfofamiliarComponent implements OnInit {
     },
     'numIdFamiliar': {
       'required': 'El número de identificación es obligatorio.',
-      'pattern': 'El número de idetificación sólo puede contener números.'
+      'minlength': 'Introduce mínimo 5 carácteres',
+      'maxlength': 'Introduce máximo 12 carácteres'
     },
     'fechaNacimientoFamiliar': {
       'required': 'La fecha de nacimiento es obligatoria.'
@@ -45,6 +72,7 @@ export class InfofamiliarComponent implements OnInit {
   };
 
   constructor(private fb: FormBuilder) {
+    this.crearFormularioPersonal();
     this.crearFormulario();
   }
 
@@ -52,14 +80,25 @@ export class InfofamiliarComponent implements OnInit {
   }
 
   addFamiliar(){
+  }
 
+  crearFormularioPersonal(){
+    this.personalForm = this.fb.group({
+      salario: ['', [Validators.required]]
+    });
+
+    this.personalForm.valueChanges.subscribe(datos => {
+      this.onCambioValorPersonal(datos);
+    });
+
+    this.onCambioValorPersonal();
   }
 
   crearFormulario(){
     this.familiarForm = this.fb.group({
-      nombreFamiliar: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      nombrefamiliar: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
       tipoIdFamiliar: ['', [Validators.required]],
-      numIdFamiliar: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      numIdFamiliar: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(25)]],
       fechaNacimientoFamiliar: ['', [Validators.required]],
       parentesco: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
     });
@@ -69,6 +108,22 @@ export class InfofamiliarComponent implements OnInit {
     });
 
     this.onCambioValorFamiliar();
+  }
+
+  onCambioValorPersonal(data?: any) { //Para cada uno de los elementos del array, añade el error encontrado
+    if (!this.personalForm) { return; }
+    const form = this.personalForm;
+    for (const field in this.personalForm) {
+      // Se borrarán los mensajes de error previos
+      this.erroresPersonalForm[field] = '';
+      const control = form.get(field);
+      if (control && control.dirty && !control.valid) {
+        const messages = this.mensajesErrorPersonal[field];
+        for (const key in control.errors) {
+          this.erroresPersonalForm[field] += messages[key] + ' ';
+        }
+      }
+    }
   }
 
   onCambioValorFamiliar(data?: any) { //Para cada uno de los elementos del array, añade el error encontrado
@@ -86,4 +141,9 @@ export class InfofamiliarComponent implements OnInit {
       }
     }
   }
+
+  onSubmit() {
+    //TODO: Save form
+  }
+
 }

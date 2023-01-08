@@ -2,64 +2,89 @@
     <div class="card">
         <form class="form">
             <h2>Información Laboral</h2>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Empresa donde labora">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Dirección laboral">
-                </mat-form-field>
-            </p>
-            <div id="fechaingreso">
-                <p>
-                    <mat-form-field class="matInputField" appearance="fill">
-                        <mat-label class="matLabel">Fecha de ingreso a la Empresa</mat-label>
-                        <input matInput [matDatepicker]="picker">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
-                </p>
-            </div>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Cargo">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Código">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Salario">
-                </mat-form-field>
-            </p>
-            <br>
             <div>
-                <p>
-                    <label class="matLabel">¿Administra recursos públicos?</label>
+                <form novalidate [formGroup]="laboralForm" (ngSubmit)="onSubmit()">
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Empresa donde labora" formControlName="empresa">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.empresa)">{{erroresForm.empresa}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Dirección laboral" formControlName="direccion">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.direccion)">{{erroresForm.direccion}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <div id="fechaingreso">
+                        <p>
+                            <mat-form-field class="matInputField" appearance="fill">
+                                <mat-label class="matLabel">Fecha de ingreso a la Empresa</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="fechaingreso">
+                                <mat-hint>MM/DD/YYYY
+                                    <span [hidden]="!(erroresForm.fechaingreso)">{{erroresForm.fechaingreso}}</span>
+                                </mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Cargo" formControlName="cargo">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.cargo)">{{erroresForm.cargo}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Código" formControlName="codigo">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.codigo)">{{erroresForm.codigo}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Salario" formControlName="salario" type="number" pattern="[0-9]*">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.salario)">{{erroresForm.salario}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
                     <br>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button color="primary" class="matRadioGroup" value="RPSI">SI</mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="RPNO">NO</mat-radio-button>
-                    </mat-radio-group>
-                </p>
-            </div>
-            <div>
-                <p>
-                    <label class="matLabel">¿Es Persona Expuesta Públicamente (PEP)?</label>
+                    <div>
+                        <p>
+                            <label class="matLabel">¿Administra recursos públicos? *</label>
+                            <br>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button color="primary" class="matRadioGroup"
+                                    value="RPSI">SI</mat-radio-button>
+                                <mat-radio-button color="primary" class="matRadioGroup"
+                                    value="RPNO">NO</mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <label class="matLabel">¿Es Persona Expuesta Públicamente (PEP)? *</label>
+                            <br>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button color="primary" class="matRadioGroup"
+                                    value="PEPSI">SI</mat-radio-button>
+                                <mat-radio-button color="primary" class="matRadioGroup"
+                                    value="PEPNO">NO</mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                    </div>
                     <br>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button color="primary" class="matRadioGroup" value="PEPSI">SI</mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="PEPNO">NO</mat-radio-button>
-                    </mat-radio-group>
-                </p>
+                </form>
             </div>
-            <br>
         </form>
     </div>
 </body>

@@ -48,6 +48,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 import { PasswordComponent } from './components/password/password.component';
 
@@ -117,6 +118,7 @@ import { ObservacionesComponent } from './components/observaciones/observaciones
     MatNativeDateModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatSelectModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

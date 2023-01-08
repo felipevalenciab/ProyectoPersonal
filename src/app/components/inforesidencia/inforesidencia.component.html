@@ -1,38 +1,42 @@
 <body class="bodyMaterial">
     <div class="card">
-        <form class="form">
+        <form class="form" novalidate [formGroup]="viviendaForm" (ngSubmit)="onSubmit()">
             <h2>Información de Vivienda</h2>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Dirección">
+                    <input matInput placeholder="Dirección" formControlName="direccion">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.direccion)">{{erroresForm.direccion}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Barrio">
+                    <input matInput placeholder="Barrio" formControlName="barrio">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.barrio)">{{erroresForm.barrio}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Ciudad">
+                    <input matInput placeholder="Ciudad" formControlName="ciudad">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.ciudad)">{{erroresForm.ciudad}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
-                <mat-form-field class="matInputField"  appearance="fill">
+                <mat-form-field class="matInputField" appearance="fill">
                     <mat-label>Estrato</mat-label>
-                    <select matNativeControl>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                    <mat-select>
+                        <mat-option *ngFor="let option of infoestrato" [value]="option">{{option}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
             </p>
             <br>
             <div>
-                <label class="matLabel">Tipo de vivienda</label>
+                <label class="matLabel">Tipo de vivienda *</label>
                 <br>
                 <mat-radio-group aria-label="Select an option">
                     <mat-radio-button color="primary" class="matRadioGroup" value="1">Propia</mat-radio-button>
@@ -44,7 +48,7 @@
             </div>
             <br>
             <div>
-                <label class="matLabel">Zona de la vivienda</label>
+                <label class="matLabel">Zona de la vivienda *</label>
                 <br>
                 <mat-radio-group aria-label="Select an option">
                     <mat-radio-button color="primary" class="matRadioGroup" value="1">Rural</mat-radio-button>

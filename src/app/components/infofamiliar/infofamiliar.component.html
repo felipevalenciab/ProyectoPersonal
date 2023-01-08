@@ -1,22 +1,15 @@
 <body class="bodyMaterial">
     <div class="card">
-        <form class="form">
+        <form class="form" novalidate [formGroup]="personalForm" (ngSubmit)="onSubmit()">
             <h2 class="matTitulo">Información Familiar</h2>
             <div id="estadocivil">
                 <p>
-                    <label class="matLabel">Estado civil</label>
-                    <br>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button color="primary" class="matRadioGroup" value="1">Soltero</mat-radio-button>
-                        <br>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Casado</mat-radio-button>
-                        <br>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Unión libre</mat-radio-button>
-                        <br>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Separado</mat-radio-button>
-                        <br>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="2">Viudo</mat-radio-button>
-                    </mat-radio-group>
+                    <mat-form-field class="matInputField" appearance="fill">
+                        <mat-label>Estado civil</mat-label>
+                        <mat-select>
+                            <mat-option *ngFor="let option of infoestadocivil" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </p>
             </div>
             <div id="conyuge">
@@ -30,25 +23,26 @@
                 </p>
                 <div id="conyugeDonde">
                     <p>
-                        <label class="matLabel">¿Dónde?</label>
-                        <br>
-                        <mat-radio-group aria-label="Select an option">
-                            <mat-radio-button color="primary" class="matRadioGroup" value="1">Empresa</mat-radio-button>
-                            <br>
-                            <mat-radio-button color="primary" class="matRadioGroup"
-                                value="2">Independiente</mat-radio-button>
-                            <br>
-                            <mat-radio-button color="primary" class="matRadioGroup"
-                                value="2">Pensionada</mat-radio-button>
-                        </mat-radio-group>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <mat-label>¿Dónde?</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let option of infodondelabora"
+                                    [value]="option">{{option}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
                     </p>
                     <p>
                         <mat-form-field class="matInputField" appearance="fill">
-                            <input matInput placeholder="Salario">
+                            <input matInput placeholder="Salario" formControlName="salario">
+                            <mat-hint>
+                                <span [hidden]="!(erroresPersonalForm.salario)">{{erroresPersonalForm.salario}}</span>
+                            </mat-hint>
                         </mat-form-field>
                     </p>
-                </div>                
+                </div>
             </div>
+        </form>
+        <form class="form" novalidate [formGroup]="familiarForm" (ngSubmit)="onSubmit()">
             <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -58,28 +52,33 @@
                         <label class="matLabel">Desplegar para añadir miembros</label>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
-                <form novalidate [formGroup]="familiarForm">
+                <form class="form" novalidate [formGroup]="familiarForm" (ngSubmit)="onSubmit()">
                     <div id="grupofamiliar">
                         <p>
                             <mat-form-field class="matInputField" appearance="fill">
-                                <input matInput formControlName="nombreFamiliar" placeholder="Nombre y apellidos">
+                                <input matInput formControlName="nombreFamiliar" placeholder="Nombre y apellidos" formControlName="nombrefamiliar">
+                                <mat-hint>
+                                    <span [hidden]="!(erroresForm.nombrefamiliar)">{{erroresForm.nombrefamiliar}}</span>
+                                </mat-hint>
                             </mat-form-field>
                         </p>
                         <div id="identificacion">
                             <p>
                                 <label class="matLabel">Tipo de identificación</label>
                                 <br>
-                                <mat-radio-group formControlName="tipoIdFamiliar" aria-label="Select an option">
-                                    <mat-radio-button formControlName="tipoIdFamiliar" color="primary"
-                                        class="matRadioGroup" checked value="1">CC</mat-radio-button>
-                                    <mat-radio-button formControlName="tipoIdFamiliar" color="primary"
+                                <mat-radio-group aria-label="Select an option">
+                                    <mat-radio-button color="primary"
+                                        class="matRadioGroup" value="1" checked="true">CC</mat-radio-button>
+                                    <mat-radio-button  color="primary"
                                         class="matRadioGroup" value="2">CE</mat-radio-button>
                                 </mat-radio-group>
                             </p>
                             <p>
                                 <mat-form-field class="matInputField" appearance="fill">
-                                    <input matInput formControlName="numIdFamiliar"
-                                        placeholder="Número de identificación">
+                                    <input matInput formControlName="numIdFamiliar" placeholder="Número de identificación" formControlName="numIdFamiliar">
+                                        <mat-hint>
+                                            <span [hidden]="!(erroresForm.nombreFamiliar)">{{erroresForm.nombreFamiliar}}</span>
+                                        </mat-hint>
                                 </mat-form-field>
                             </p>
                         </div>
@@ -96,7 +95,10 @@
                         </div>
                         <p>
                             <mat-form-field class="matInputField" appearance="fill">
-                                <input matInput formControlName="parentesco" placeholder="Parentesco">
+                                <input matInput formControlName="parentesco" placeholder="Parentesco" formControlName="parentesco">
+                                <mat-hint>
+                                    <span [hidden]="!(erroresForm.parentesco)">{{erroresForm.parentesco}}</span>
+                                </mat-hint>
                             </mat-form-field>
                         </p>
                         <button mat-raised-button color="primary" (click)="addFamiliar()"><label
@@ -105,5 +107,6 @@
                 </form>
             </mat-expansion-panel>
         </form>
+
     </div>
 </body>

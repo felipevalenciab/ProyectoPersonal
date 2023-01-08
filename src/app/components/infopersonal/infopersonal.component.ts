@@ -61,7 +61,7 @@ export class InfopersonalComponent implements OnInit {
       'required': 'El País es obligatorio',
       'minlength': 'Introduce mínimo 2 carácteres',
       'maxlength': 'Introduce máximo de 45 carácteres'
-    },
+    }
   }
 
   constructor( private fb: FormBuilder ) {
@@ -106,6 +106,7 @@ export class InfopersonalComponent implements OnInit {
   }
 
   onSubmit() {
+    //TODO: Save form
   }
 
 }

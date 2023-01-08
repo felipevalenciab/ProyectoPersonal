@@ -1,11 +1,14 @@
 <body class="bodyMaterial">
     <div class="card">
-        <form class="form">
+        <form class="form" novalidate [formGroup]="finacieraForm" (ngSubmit)="onSubmit()">
             <h2>Información Financiera</h2>
-
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Ingresos mensuales actividad principal">
+                    <input matInput placeholder="Ingresos mes actividad principal" type="number" pattern="[0-9]*"
+                        formControlName="ingmensuales">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.ingmensuales)">{{erroresForm.ingmensuales}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <div>
@@ -18,37 +21,64 @@
                     </mat-radio-group>
                     <br>
                     <mat-form-field class="matInputField" appearance="fill">
-                        <input matInput placeholder="Cantidad otros ingresos">
+                        <input matInput placeholder="Cantidad otros ingresos" type="number" pattern="[0-9]*"
+                            formControlName="otingresos">
+                        <mat-hint>
+                            <span [hidden]="!(erroresForm.otingresos)">{{erroresForm.otingresos}}</span>
+                        </mat-hint>
                     </mat-form-field>
                     <mat-form-field class="matInputField" appearance="fill">
-                        <input matInput placeholder="Procedencia otros ingresos">
+                        <input matInput placeholder="Procedencia otros ingresos" formControlName="procdnciaoting">
+                        <mat-hint>
+                            <span [hidden]="!(erroresForm.procdnciaoting)">{{erroresForm.procdnciaoting}}</span>
+                        </mat-hint>
                     </mat-form-field>
                 </p>
             </div>
             <label class="matLabel">Cantidades totales</label>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Total ingresos mensuales">
+                    <input matInput placeholder="Total ingresos mes" type="text" pattern="^\d+(?:,\d{3})*\.\d{2}$"
+                        formControlName="totaling">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.totaling)">{{erroresForm.totaling}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Total egresos mensuales">
+                    <input matInput placeholder="Total egresos mes" type="number" pattern="[0-9]*"
+                        formControlName="totalegr">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.totalegr)">{{erroresForm.totalegr}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Total activos">
+                    <input matInput placeholder="Total activos" type="number" pattern="[0-9]*"
+                        formControlName="totalactivos">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.totalactivos)">{{erroresForm.totalactivos}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Total pasivos">
+                    <input matInput placeholder="Total pasivos" type="number" pattern="[0-9]*"
+                        formControlName="totalpasivos">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.totalpasivos)">{{erroresForm.totalpasivos}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Total patrimonio">
+                    <input matInput placeholder="Total patrimonio" type="number" pattern="[0-9]*"
+                        formControlName="totalpatrimonio">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.totalpatrimonio)">{{erroresForm.totalpatrimonio}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
             <div>

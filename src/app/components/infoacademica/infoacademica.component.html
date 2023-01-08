@@ -1,50 +1,26 @@
 <body class="bodyMaterial">
     <div class="card">
-        <form class="form">
+        <form novalidate [formGroup]="academicaForm" (ngSubmit)="onSubmit()">
             <h2>Información Académica</h2>
             <div>
                 <p>
                     <label class="matLabel">Nivel de estudios</label>
                     <br>
-                    <mat-radio-group aria-label="Select an option">
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CC">
-                            Primaria
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Bachiller
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Técnico
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Tecnólogo
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Universitario
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Especialización
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Doctorado
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Magister
-                        </mat-radio-button>
-                        <mat-radio-button color="primary" class="matRadioGroup" value="CE">
-                            Otro
-                        </mat-radio-button>
-                    </mat-radio-group>
+                    <mat-form-field class="matInputField" appearance="fill">
+                        <mat-label>Nivel de estudios</mat-label>
+                        <mat-select>
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let option of infoacademica" [value]="option">{{option}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </p>
             </div>
             <p>
                 <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="¿Cuál?">
-                </mat-form-field>
-            </p>
-            <p>
-                <mat-form-field class="matInputField" appearance="fill">
-                    <input matInput placeholder="Título obtenido/Profesión">
+                    <input matInput placeholder="Título obtenido/Profesión" formControlName="titulo">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.titulo)">{{erroresForm.titulo}}</span>
+                    </mat-hint>
                 </mat-form-field>
             </p>
         </form>
