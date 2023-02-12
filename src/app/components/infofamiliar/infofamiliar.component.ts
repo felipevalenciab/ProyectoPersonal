@@ -30,7 +30,9 @@ export class InfofamiliarComponent implements OnInit {
   familiarForm!: FormGroup;
 
   erroresPersonalForm: any = {
-    'salario': ''
+    'salario': '',
+    'personas': '',
+    'mascota': ''
   };
 
   erroresForm: any = {
@@ -44,6 +46,16 @@ export class InfofamiliarComponent implements OnInit {
   mensajesErrorPersonal: any = {
     'salario': {
       'required': 'El nombre es obligatorio.'
+    },
+    'personas': {
+      'required': 'El número de personas es obligatorio.',
+      'minlength': 'Debe tener una longitud mínima de 1 carácter.',
+      'maxlength': 'No puede exceder más de 2 carácteres.'
+    },
+    'mascotas': {
+      'required': 'La cantidas y tipo de mascotas son obligatorias.',
+      'minlength': 'Debe tener una longitud mínima de 5 carácteres.',
+      'maxlength': 'No puede exceder más de 45 carácteres.'
     },
   }
 
@@ -84,7 +96,9 @@ export class InfofamiliarComponent implements OnInit {
 
   crearFormularioPersonal(){
     this.personalForm = this.fb.group({
-      salario: ['', [Validators.required]]
+      salario: ['', [Validators.required]],
+      personas: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(2)]],
+      mascotas: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(45)]],
     });
 
     this.personalForm.valueChanges.subscribe(datos => {

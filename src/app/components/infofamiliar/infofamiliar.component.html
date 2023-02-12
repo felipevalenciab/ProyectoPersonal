@@ -12,6 +12,46 @@
                     </mat-form-field>
                 </p>
             </div>
+            <div>
+                <p>
+                    <label class="matLabel">¿Es usted cabeza de familia?</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup"
+                            value="CabezaFamSi">SI</mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup"
+                            value="CabezaFamNo">NO</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Número de personas a cargo:" formControlName="personas">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.personas)">{{erroresForm.personas}}</span>
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            <div>
+                <p>
+                    <label class="matLabel">¿Tiene mascota?</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup"
+                            value="MascotaSi">SI</mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup"
+                            value="MascotaNo">NO</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Tipo (perro, gato, otro.) y cantidad de mascotas:" formControlName="personas">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.mascota)">{{erroresForm.mascota}}</span>
+                    </mat-hint>
+                </mat-form-field>
+            </p>
             <div id="conyuge">
                 <p>
                     <label class="matLabel">¿Su cónyuge labora?</label>

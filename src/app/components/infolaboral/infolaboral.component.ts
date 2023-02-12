@@ -13,6 +13,9 @@ export class InfolaboralComponent implements OnInit {
   erroresForm: any = {
     'empresa': '',
     'direccion': '',
+    'arealaboral': '',
+    'cuentabancaria': '',
+    'banco': '',
     'fechaingreso': '',
     'cargo' : '',
     'codigo' : '',
@@ -27,6 +30,21 @@ export class InfolaboralComponent implements OnInit {
     },
     'direccion': {
       'required': 'La dirección es obligatoria',
+      'minlength': 'Introduce mínimo 5 carácteres',
+      'maxlength': 'Introduce máximo de 30 carácteres'
+    },
+    'arealaboral' : {
+      'required': 'El área laboral es obligatoria',
+      'minlength': 'Introduce mínimo 5 carácteres',
+      'maxlength': 'Introduce máximo de 30 carácteres'
+    },
+    'cuentabancaria' : {
+      'required': ' La cuenta bancaria es obligatoria',
+      'minlength': 'Introduce mínimo 5 carácteres',
+      'maxlength': 'Introduce máximo de 30 carácteres'
+    },
+    'banco': {
+      'required': 'El banco es obligatorio',
       'minlength': 'Introduce mínimo 5 carácteres',
       'maxlength': 'Introduce máximo de 30 carácteres'
     },
@@ -60,6 +78,9 @@ export class InfolaboralComponent implements OnInit {
     this.laboralForm = this.fb.group({
       empresa: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      arealaboral: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      cuentabancaria: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
+      banco: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(30)]],
       fechaingreso: ['', [Validators.required]],
       cargo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
       codigo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(15)]],

@@ -20,6 +20,42 @@
                             </mat-hint>
                         </mat-form-field>
                     </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Área en la que labora" formControlName="arealaboral">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.arealaboral)">{{erroresForm.arealaboral}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Número cuenta bancaria" formControlName="cuentabancaria">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.cuentabancaria)">{{erroresForm.cuentabancaria}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
+                    <div>
+                        <p>
+                            <label class="matLabel">Clase de cuenta</label>
+                            <br>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button color="primary" class="matRadioGroup"
+                                    value="ahorros">Ahorros</mat-radio-button>
+                                <mat-radio-button color="primary" class="matRadioGroup"
+                                    value="corriente">Corriente</mat-radio-button>
+                            </mat-radio-group>
+                        </p>
+                    </div>
+                    <p>
+                        <mat-form-field class="matInputField" appearance="fill">
+                            <input matInput placeholder="Banco" formControlName="banco">
+                            <mat-hint>
+                                <span [hidden]="!(erroresForm.banco)">{{erroresForm.banco}}</span>
+                            </mat-hint>
+                        </mat-form-field>
+                    </p>
                     <div id="fechaingreso">
                         <p>
                             <mat-form-field class="matInputField" appearance="fill">

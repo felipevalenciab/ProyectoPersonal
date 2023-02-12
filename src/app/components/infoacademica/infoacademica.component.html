@@ -23,6 +23,34 @@
                     </mat-hint>
                 </mat-form-field>
             </p>
+            <div>
+                <p>
+                    <label class="matLabel">¿Actualmente se encuentra estudiando?</label>
+                    <br>
+                    <mat-radio-group aria-label="Select an option">
+                        <mat-radio-button color="primary" class="matRadioGroup"
+                            value="EstudiandoSi">SI</mat-radio-button>
+                        <mat-radio-button color="primary" class="matRadioGroup"
+                            value="EstudiandoNo">NO</mat-radio-button>
+                    </mat-radio-group>
+                </p>
+            </div>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Nombre de los estudios actuales:" formControlName="nombreactual">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.nombreactual)">{{erroresForm.nombreactual}}</span>
+                    </mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field class="matInputField" appearance="fill">
+                    <input matInput placeholder="Curso actual (semestre, año, etc.):" formControlName="cursoactual">
+                    <mat-hint>
+                        <span [hidden]="!(erroresForm.cursoactual)">{{erroresForm.cursoactual}}</span>
+                    </mat-hint>
+                </mat-form-field>
+            </p>
         </form>
     </div>
 </body>

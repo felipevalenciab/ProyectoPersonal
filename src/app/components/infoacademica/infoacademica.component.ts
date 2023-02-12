@@ -12,7 +12,9 @@ export class InfoacademicaComponent implements OnInit {
 
   erroresForm: any = {
     'nivel': '',
-    'titulo': ''
+    'titulo': '',
+    'nombreactual': '',
+    'cursoactual': ''
   };
 
   mensajesError: any = {
@@ -21,6 +23,16 @@ export class InfoacademicaComponent implements OnInit {
     },
     'titulo': {
       'required': 'La título obtenido/profesión es obligatorio',
+      'minlength': 'Introduce mínimo 2 carácteres',
+      'maxlength': 'Introduce máximo de 45 carácteres'
+    },
+    'nombreactual': {
+      'required': 'El nombre es obligatorio',
+      'minlength': 'Introduce mínimo 2 carácteres',
+      'maxlength': 'Introduce máximo de 45 carácteres'
+    },
+    'cursoactual': {
+      'required': 'El curso es obligatorio',
       'minlength': 'Introduce mínimo 2 carácteres',
       'maxlength': 'Introduce máximo de 45 carácteres'
     }
@@ -49,6 +61,8 @@ export class InfoacademicaComponent implements OnInit {
     this.academicaForm = this.fb.group({
       nivel: ['', [Validators.required]],
       titulo: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      nombreactual: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
+      cursoactual: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(45)]],
     });
     this.academicaForm.valueChanges.subscribe(datos =>{
       this.onChangeForm(datos);
