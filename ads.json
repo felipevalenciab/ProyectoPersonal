@@ -1,1 +1,18 @@
-{}
+{
+    "Test": {
+        "projectName": "Test",
+        "description": "Test",
+        "type": "community",
+        "author": "felipevalenciab",
+        "version": "0.0.1",
+        "authorWebsite": "https://github.com/felipevalenciab/ProyectoPersonal",
+        "githubUri": "https://github.com/felipevalenciab/ProyectoPersonal",
+        "license": "MIT",
+        "lastUpdated": "1694617019671",
+        "tags": [
+            "te",
+            "test"
+        ],
+        "noDirectLaunch": []
+    }
+}
